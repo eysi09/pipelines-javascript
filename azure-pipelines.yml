@@ -14,13 +14,13 @@ steps:
 - script: |
     sudo apt install rsync cmake libicu-dev pkg-config
   displayName: Install apt dependencies
-  name: apt-install
+  name: apt_install
 
 - script: |
     npm install
     npm test
   displayName: NPM commands
-  name: npm-commands
+  name: npm_commands
 
 - task: PublishTestResults@2
   inputs:
