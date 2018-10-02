@@ -11,16 +11,17 @@ steps:
   inputs:
     versionSpec: '8.x'
 
-- script: |
-    sudo apt install rsync cmake libicu-dev pkg-config
+- script: sudo apt install rsync cmake libicu-dev pkg-config
   displayName: Install apt dependencies
-  name: apt_install
+
+- script: |
+    curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v1.10.0/bin/linux/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
+  displayName: Install kubectl
 
 - script: |
     npm install
     npm test
   displayName: NPM commands
-  name: npm_commands
 
 - task: PublishTestResults@2
   inputs:
