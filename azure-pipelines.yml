@@ -12,8 +12,15 @@ steps:
     versionSpec: '8.x'
 
 - script: |
+    sudo apt install rsync cmake libicu-dev pkg-config
+  displayName: Install apt dependencies
+  name: apt-install
+
+- script: |
     npm install
     npm test
+  displayName: NPM commands
+  name: npm-commands
 
 - task: PublishTestResults@2
   inputs:
